@@ -81,9 +81,10 @@ esp_err_t connect_to_wifi(const char *ssid, const char *password)
 	};
 	strcpy((char *)wifi_configuration.sta.ssid, ssid);
 	strcpy((char *)wifi_configuration.sta.password, password);
-	ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_configuration));
 
 	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+	ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_configuration));
+
 	ESP_ERROR_CHECK(esp_wifi_start());
 
 	ESP_ERROR_CHECK(esp_wifi_connect());
